@@ -45,6 +45,8 @@ export const getMatches = async (season, team, stadium, competition, result) => 
 
       const data = await response.json();
 
+      console.log(data)
+
 
       if (response.status === 200) {
         

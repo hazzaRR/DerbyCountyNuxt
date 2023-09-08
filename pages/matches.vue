@@ -27,7 +27,7 @@
     <option value="L">Loss</option>
   </select>
   <div class="indicator">
-    <button class="btn join-item bg-red-500">Search</button>
+    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
   </div>
 </div>
 <div class="w-1/2 mx-auto m-6">
@@ -81,64 +81,18 @@ const competition = ref(null);
 const result = ref(null);
 
 
-// const getMatches = async () => {
-//     // Define the base URL
-//     const baseUrl = `${config.public.API_BASE_URL}/api/match/find`;
-
-//     // Create an empty object to store the query parameters
-//     const queryParams = {};
-
-//     // Check if each parameter is selected and add it to the queryParams object if it is
-//     if (season.value !== null) {
-//       queryParams.season = season.value;
-//     }
-
-//     if (team.value !== null) {
-//       queryParams.team = team.value;
-//     }
-
-//     if (stadium.value !== null) {
-//       queryParams.stadium = stadium.value;
-//     }
-
-//     if (competition.value !== null) {
-//       queryParams.competition = competition.value;
-//     }
-
-//     if (result.value !== null) {
-//       queryParams.result = result.value;
-//     }
-
-//     // Convert the queryParams object to a query string
-//     const queryString = Object.keys(queryParams)
-//       .map(key => `${key}=${encodeURIComponent(queryParams[key])}`)
-//       .join('&');
-
-//     // Construct the final URL by appending the query string to the base URL
-//     const finalUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
-
-//     try {
-//       // Send the request with the constructed URL
-//       const response = await fetch(finalUrl, {
-//         method: 'GET', // You can specify the HTTP method here (GET in this example)
-//       });
-
-
-//       const data = await response.json();
-
-//       matches.value = data;
-
-//       // Handle the response as needed
-//       // ...
-//     } catch (error) {
-//       // Handle any errors that occur during the request
-//       console.error(error);
-//     }
-// }
-
 onBeforeMount(async () => {
+  seasons.value = await getSeasons();
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 });
+
+
+const FindMatchesBasedOnSearch = async () => {
+
+  console.log("find matches");
+
+  matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
+}
 
 
 
