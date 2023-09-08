@@ -1,8 +1,8 @@
-export const getTeams = async (season) => {
+export const getCompetitions = async (season) => {
 
     const config = useRuntimeConfig();
     // Define the base URL
-    const baseUrl = `${config.public.API_BASE_URL}/api/match/all-teams-played-against`;
+    const baseUrl = `${config.public.API_BASE_URL}/api/match/competitions`;
 
     // Create an empty object to store the query parameters
     const queryParams = {};
@@ -28,6 +28,7 @@ export const getTeams = async (season) => {
 
 
       const data = await response.json();
+
 
       if (response.status === 200) {
         

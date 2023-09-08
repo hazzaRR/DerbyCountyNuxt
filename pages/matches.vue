@@ -64,6 +64,8 @@
 </template>
 
 <script setup>
+import { getTeams } from "~/composables/getTeams";
+
 
 const config = useRuntimeConfig();
 
@@ -83,14 +85,13 @@ const result = ref(null);
 
 onBeforeMount(async () => {
   seasons.value = await getSeasons();
+  teams.value = await getTeams(season.value);
+  competitions.value = await getCompetitions(season.value);
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 });
 
 
 const FindMatchesBasedOnSearch = async () => {
-
-  console.log("find matches");
-
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 }
 
