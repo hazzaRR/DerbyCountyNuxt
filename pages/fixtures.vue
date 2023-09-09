@@ -1,10 +1,92 @@
 <template>
-    <div>
+    <div class="">
+      <div class="overflow-x-auto">
+  <!-- <div class="join mx-auto m-6 w-10/12 justify-center flex">
+    <select v-model="season" class="select select-bordered join-item">
+    <option disabled selected :value="null">Season</option>
+    <option v-for="season in seasons" :key="season" :value="season">
+    {{ season }}
+  </option>
+  </select>
+  <select v-model="team" class="select select-bordered join-item">
+    <option disabled selected :value="null">Team</option>
+    <option v-for="team in teams" :key="team" :value="team">
+    {{ team }}
+  </option>
+  </select>
+  <select v-model="competition" class="select select-bordered join-item">
+    <option disabled selected :value="null">Competition</option>
+    <option v-for="competition in competitions" :key="competition" :value="competition">
+    {{ competition }}
+  </option>
+  </select>
+  <select v-model="result" class="select select-bordered join-item">
+    <option disabled selected :value="null">Result</option>
+    <option value="W">Win</option>
+    <option value="D">Draw</option>
+    <option value="L">Loss</option>
+  </select>
+  <div class="indicator">
+    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
+  </div>
+  <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
+</div> -->
+<div class="w-1/2 mx-auto m-6">
+  <table class="table border-2 border-white">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Kick Off</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
+        <th>Competition</th>
+        <th>Stadium</th>
+        <th>Sky Sports URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hover" v-for="fixture in fixtures" :key="fixture.matchId">
+        <th>{{new Date(fixture.kickoff).toLocaleDateString()}}</th>
+        <th>{{new Date(fixture.kickoff).toLocaleTimeString()}}</th>
+        <th>{{fixture.homeTeam}}</th>
+        <th>{{fixture.awayTeam}}</th>
+        <th>{{fixture.competition}}</th>
+        <th>{{fixture.stadium}}</th>
+        <th>{{fixture.skySportsURL}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
 
     </div>
 </template>
 
 <script setup>
+
+
+const config = useRuntimeConfig();
+
+
+const fixtures = ref([]);
+const teams = ref([]);
+const competitions = ref([]);
+
+//search params
+const year = ref(null);
+const team = ref(null);
+const competition = ref(null);
+const stadium = ref(null);
+
+
+onBeforeMount(async () => {
+  fixtures.value = await getFixtures(year.value, team.value, stadium.value, competition.value);
+});
+
+
+
 
 </script>
 
