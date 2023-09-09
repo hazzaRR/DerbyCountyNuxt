@@ -27,9 +27,9 @@
     <option value="L">Loss</option>
   </select>
   <div class="indicator">
-    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
+    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-green-900">Search</button>
   </div>
-  <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
+  <button @click="resetFilters" class="btn join-item bg-red-700">Reset Filters</button>
 </div>
 <div class="w-1/2 mx-auto m-6">
   <table class="table border-2 border-white">

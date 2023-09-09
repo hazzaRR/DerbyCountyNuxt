@@ -1,13 +1,7 @@
 <template>
     <div class="">
       <div class="overflow-x-auto">
-  <!-- <div class="join mx-auto m-6 w-10/12 justify-center flex">
-    <select v-model="season" class="select select-bordered join-item">
-    <option disabled selected :value="null">Season</option>
-    <option v-for="season in seasons" :key="season" :value="season">
-    {{ season }}
-  </option>
-  </select>
+  <div class="join mx-auto m-6 w-10/12 justify-center flex">
   <select v-model="team" class="select select-bordered join-item">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
@@ -20,17 +14,11 @@
     {{ competition }}
   </option>
   </select>
-  <select v-model="result" class="select select-bordered join-item">
-    <option disabled selected :value="null">Result</option>
-    <option value="W">Win</option>
-    <option value="D">Draw</option>
-    <option value="L">Loss</option>
-  </select>
   <div class="indicator">
     <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
   </div>
   <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
-</div> -->
+</div>
 <div class="w-1/2 mx-auto m-6">
   <table class="table border-2 border-white">
     <!-- head -->
@@ -53,7 +41,7 @@
         <th>{{fixture.awayTeam}}</th>
         <th>{{fixture.competition}}</th>
         <th>{{fixture.stadium}}</th>
-        <th>{{fixture.skySportsURL}}</th>
+        <th><a :href="fixture.skySportsURL"></a>Link</th>
       </tr>
     </tbody>
   </table>
@@ -82,6 +70,7 @@ const stadium = ref(null);
 
 
 onBeforeMount(async () => {
+  competitions.value = await getFixtureCompetitions();
   fixtures.value = await getFixtures(year.value, team.value, stadium.value, competition.value);
 });
 
