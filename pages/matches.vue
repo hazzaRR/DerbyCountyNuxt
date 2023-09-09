@@ -7,17 +7,17 @@
     <option v-for="season in seasons" :key="season" :value="season">
     {{ season }}
   </option>
-  </select>
+</select>
+<select v-model="competition" class="select select-bordered join-item">
+  <option disabled selected :value="null">Competition</option>
+  <option v-for="competition in competitions" :key="competition" :value="competition">
+  {{ competition }}
+</option>
+</select>
   <select v-model="team" class="select select-bordered join-item">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
     {{ team }}
-  </option>
-  </select>
-  <select v-model="competition" class="select select-bordered join-item">
-    <option disabled selected :value="null">Competition</option>
-    <option v-for="competition in competitions" :key="competition" :value="competition">
-    {{ competition }}
   </option>
   </select>
   <select v-model="result" class="select select-bordered join-item">
@@ -86,6 +86,7 @@ const result = ref(null);
 
 onBeforeMount(async () => {
   seasons.value = await getSeasons();
+  season.value = await getCurrentSeason();
   teams.value = await getTeams(season.value);
   competitions.value = await getCompetitions(season.value);
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
@@ -96,19 +97,55 @@ watch(season, async (newSeason) => {
   competitions.value = await getCompetitions(newSeason);
 });
 
+watch(competition, async (newCompetition) => {
+  teams.value = await getTeams(season.value, newCompetition);
+});
+
+const getCurrentSeason = async () => {
+
+  try {
+    const response = await fetch(`${config.public.API_BASE_URL}/api/match/current-season`, {
+      method: "GET",
+      headers: { 
+          "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    if (response.status === 200) {
+      
+      return data.data;
+  }
+
+  else {
+      return null;
+  }
+
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error(error);
+  }
+
+  
+
+
+};
+
 
 
 const FindMatchesBasedOnSearch = async () => {
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 };
 
-const resetFilters = () => {
+const resetFilters = async () => {
 
-  season.value = null;
+  season.value = await getCurrentSeason();
   team.value = null;
   stadium.value = null;
   competition.value = null;
   result.value = null;
+
+  matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 
 };
 

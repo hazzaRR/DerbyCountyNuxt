@@ -90,10 +90,14 @@ const FindFixturesBasedOnSearch = async () => {
 };
 
 
-const resetFilters = () => {
+const resetFilters = async () => {
 
   competition.value = null;
   team.value = null;
+  year.value = null;
+  stadium.value = null;
+
+  fixtures.value = await getFixtures(year.value, team.value, stadium.value, competition.value);
 
 };
 

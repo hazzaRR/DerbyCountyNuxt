@@ -1,4 +1,4 @@
-export const getTeams = async (season) => {
+export const getTeams = async (season, competition) => {
 
     const config = useRuntimeConfig();
     // Define the base URL
@@ -10,6 +10,10 @@ export const getTeams = async (season) => {
     // Check if each parameter is selected and add it to the queryParams object if it is
     if (season !== null) {
       queryParams.season = season;
+    }
+
+    if (competition != null) {
+      queryParams.competition = competition;
     }
 
     const queryString = Object.keys(queryParams)
