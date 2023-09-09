@@ -90,6 +90,12 @@ onBeforeMount(async () => {
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
 });
 
+watch(season, async (newSeason) => {
+  teams.value = await getTeams(newSeason);
+  competitions.value = await getCompetitions(newSeason);
+});
+
+
 
 const FindMatchesBasedOnSearch = async () => {
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
