@@ -29,6 +29,7 @@
   <div class="indicator">
     <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
   </div>
+  <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
 </div>
 <div class="w-1/2 mx-auto m-6">
   <table class="table border-2 border-white">
@@ -99,9 +100,17 @@ watch(season, async (newSeason) => {
 
 const FindMatchesBasedOnSearch = async () => {
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
-}
+};
 
+const resetFilters = () => {
 
+  season.value = null;
+  team.value = null;
+  stadium.value = null;
+  competition.value = null;
+  result.value = null;
+
+};
 
 </script>
 
