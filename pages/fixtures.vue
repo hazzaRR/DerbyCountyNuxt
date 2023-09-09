@@ -15,7 +15,7 @@
   </option>
   </select>
   <div class="indicator">
-    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-red-500">Search</button>
+    <button @click="FindFixturesBasedOnSearch" class="btn join-item bg-green-900">Search</button>
   </div>
   <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
 </div>
@@ -65,9 +65,9 @@ const teams = ref([]);
 const competitions = ref([]);
 
 //search params
-const year = ref(null);
 const team = ref(null);
 const competition = ref(null);
+const year = ref(null);
 const stadium = ref(null);
 
 
@@ -81,7 +81,21 @@ onBeforeMount(async () => {
 watch(competition, async (newCompetition) => {
   teams.value = await getFixtureTeams(newCompetition);
   team.value = null;
-})
+});
+
+const FindFixturesBasedOnSearch = async () => {
+
+  fixtures.value = await getFixtures(year.value, team.value, stadium.value, competition.value);
+
+};
+
+
+const resetFilters = () => {
+
+  competition.value = null;
+  team.value = null;
+
+};
 
 
 
