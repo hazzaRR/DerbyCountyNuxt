@@ -2,16 +2,16 @@
     <div class="">
       <div class="overflow-x-auto">
   <div class="join mx-auto m-6 w-10/12 justify-center flex">
+    <select v-model="competition" class="select select-bordered join-item">
+      <option disabled selected :value="null">Competition</option>
+      <option v-for="competition in competitions" :key="competition" :value="competition">
+      {{ competition }}
+    </option>
+    </select>
   <select v-model="team" class="select select-bordered join-item">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
     {{ team }}
-  </option>
-  </select>
-  <select v-model="competition" class="select select-bordered join-item">
-    <option disabled selected :value="null">Competition</option>
-    <option v-for="competition in competitions" :key="competition" :value="competition">
-    {{ competition }}
   </option>
   </select>
   <div class="indicator">
@@ -53,6 +53,8 @@
 </template>
 
 <script setup>
+import { getFixtureTeams } from "~/composables/getFixtureTeams";
+
 
 
 const config = useRuntimeConfig();
@@ -71,9 +73,15 @@ const stadium = ref(null);
 
 onBeforeMount(async () => {
   competitions.value = await getFixtureCompetitions();
+  teams.value = await getFixtureTeams(competition.value);
   fixtures.value = await getFixtures(year.value, team.value, stadium.value, competition.value);
 });
 
+
+watch(competition, async (newCompetition) => {
+  teams.value = await getFixtureTeams(newCompetition);
+  team.value = null;
+})
 
 
 
