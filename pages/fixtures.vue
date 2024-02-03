@@ -41,7 +41,7 @@
         <th>{{fixture.awayTeam}}</th>
         <th>{{fixture.competition}}</th>
         <th>{{fixture.stadium}}</th>
-        <th><a :href="fixture.skySportsURL"></a>Link</th>
+        <th><a :href="fixture.skySportsURL">Link</a></th>
       </tr>
     </tbody>
   </table>
