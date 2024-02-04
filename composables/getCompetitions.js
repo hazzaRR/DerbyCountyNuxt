@@ -8,7 +8,7 @@ export const getCompetitions = async (season) => {
     const queryParams = {};
 
     // Check if each parameter is selected and add it to the queryParams object if it is
-    if (season !== null) {
+    if (season !== null && season !== "all") {
       queryParams.season = season;
     }
 

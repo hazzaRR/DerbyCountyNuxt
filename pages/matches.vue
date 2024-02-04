@@ -3,7 +3,8 @@
       <div class="overflow-x-auto">
   <div class="join mx-auto m-6 w-10/12 justify-center flex">
     <select v-model="season" class="select select-bordered join-item">
-    <option disabled selected :value="null">Season</option>
+    <option disabled selected value="null">Season</option>
+    <option value="all">All</option>
     <option v-for="season in seasons" :key="season" :value="season">
     {{ season }}
   </option>
@@ -32,7 +33,7 @@
   <button @click="resetFilters" class="btn join-item bg-red-700">Reset Filters</button>
 </div>
 <div class="w-1/2 mx-auto m-6">
-  <table class="table border-2 border-white">
+  <table class="table border-2 border-white my-24">
     <!-- head -->
     <thead>
       <tr>
@@ -95,10 +96,13 @@ onBeforeMount(async () => {
 watch(season, async (newSeason) => {
   teams.value = await getTeams(newSeason);
   competitions.value = await getCompetitions(newSeason);
+  team.value = null;
+  competition.value = null;
 });
 
 watch(competition, async (newCompetition) => {
   teams.value = await getTeams(season.value, newCompetition);
+  team.value = null;
 });
 
 const getCurrentSeason = async () => {

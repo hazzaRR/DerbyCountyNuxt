@@ -4,7 +4,7 @@
 <div class="navbar bg-base-200 w border-y-2 border-white mb-6">
   <div class="flex-1">
     <NuxtLink to="/" class="btn btn-ghost normal-case text-xl w-32 h-24"><img class="w-32 h-24" src="~/assets/ram-white.png" alt=""></NuxtLink>
-    <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">Derby County history and stats</NuxtLink>
+    <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">Derby County API</NuxtLink>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">

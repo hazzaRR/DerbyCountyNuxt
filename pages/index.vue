@@ -1,34 +1,9 @@
 <template>
     <div>
 
-        <h1>Hello world!</h1>
+        <h1 class="text-xl">Welcome to this api on Derby County results, this API allows you to fetch any match score in Derby County's history and all their upcoming fixtures</h1>
+        <h2 class="text-lg">This API is continuely being improved, with the hopes of eventually getting all the data/stats from each match</h2>
 
-        <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span style="--value:15;"></span>
-    </span>
-    days
-  </div> 
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span style="--value:10;"></span>
-    </span>
-    hours
-  </div> 
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span style="--value:24;"></span>
-    </span>
-    min
-  </div> 
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span style="--value:23;"></span>
-    </span>
-    sec
-  </div>
-</div>
 
     </div>
 </template>
