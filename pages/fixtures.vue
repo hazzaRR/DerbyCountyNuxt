@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="grow my-6">
       <div class="overflow-x-auto">
   <div class="join mx-auto m-6 w-10/12 justify-center flex">
     <select v-model="competition" class="select select-bordered join-item">

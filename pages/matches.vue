@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+  <div class="grow my-6">
       <div class="overflow-x-auto">
   <div class="join mx-auto m-6 w-10/12 justify-center flex">
     <select v-model="season" class="select select-bordered join-item">
@@ -9,19 +9,19 @@
     {{ season }}
   </option>
 </select>
-<select v-model="competition" class="select select-bordered join-item">
+<select v-model="competition" class="select select-bordered join-item w-10/12">
   <option disabled selected :value="null">Competition</option>
   <option v-for="competition in competitions" :key="competition" :value="competition">
   {{ competition }}
 </option>
 </select>
-  <select v-model="team" class="select select-bordered join-item">
+  <select v-model="team" class="select select-bordered join-item w-10/12">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
     {{ team }}
   </option>
   </select>
-  <select v-model="result" class="select select-bordered join-item">
+  <select v-model="result" class="select select-bordered join-item w-10/12">
     <option disabled selected :value="null">Result</option>
     <option value="W">Win</option>
     <option value="D">Draw</option>
