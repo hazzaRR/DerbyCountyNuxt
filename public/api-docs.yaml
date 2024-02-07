@@ -8,8 +8,8 @@ info:
     email: harryredman.dev@gmail.com
   version: "1.0"
 servers:
-- url: http://localhost:8080
-  description: Development
+- url: https://derby-api.azurewebsites.net/
+  description: Production
 tags:
 - name: Match
   description: API to get all the past and present Derby County match results
