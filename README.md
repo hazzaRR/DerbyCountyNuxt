@@ -1,63 +1,30 @@
-# Nuxt 3 Minimal Starter
+# Derby County API Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Hi welcome to my repository for the frontend for my the Derby County API website built using Nuxt 3. If you want to view the live site check it out here at [derby-county.harryredman.com](https://derby-county.harryredman.com).
+
+## Features to add
+
+1. add current league table
+2. fix styling issue on phone screens
+3. fetch latest game result
+4. fetch next fixture
+5. sorting by data by different parameters
+
 
 ## Setup
 
+If you are interested in running locally here is a quick guide on how to do this:
 Make sure to install the dependencies:
 
 ```bash
+# yarn
+yarn install
+
 # npm
 npm install
 
 # pnpm
 pnpm install
-
-# yarn
-yarn install
 ```
 
 ## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

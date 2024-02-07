@@ -13,8 +13,10 @@
 <script setup>
 
 const links = [
+    {name: "Home", link: '/'},
     {name: "Match History", link: '/matches'},
     {name: "Upcoming Fixtures", link: '/fixtures'},
+    {name: "Upcoming featues", link: '/upcoming'},
     // {name: "Current League Table", link: '/league-table'},
 ]
 
