@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen flex flex-col">
-        <NavBar :links="links"/>
+        <NavBar class="top-0 z-50" :links="links"/>
         <slot class="grow"/>
         <footer class="footer footer-center p-4 bg-base-200 text-base-content border-t-2 border-white sticky bottom-0 z-50">
             <aside>
