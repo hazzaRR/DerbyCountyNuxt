@@ -5,8 +5,6 @@
     <ol class="list-decimal mx-10">
         <li class="my-2">add current league table</li>
         <li class="my-2">fix styling issue on phone screens</li>
-        <li class="my-2">fetch latest game result</li>
-        <li class="my-2">fetch next fixture</li>
         <li class="my-2">sorting by data by different parameters</li>
         <li class="my-2">getting all the data/stats from each match</li>
     </ol>
