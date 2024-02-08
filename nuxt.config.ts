@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   telemetry: false,
   app: {
     head: {
@@ -30,9 +37,6 @@ export default defineNuxtConfig({
       API_BASE_URL: 'https://derby-api.azurewebsites.net/' // process.env.API_BASE_URL //'http://localhost:5000'
     }
   },
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ]
 
 
 })
