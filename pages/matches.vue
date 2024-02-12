@@ -1,39 +1,39 @@
 <template>
   <div class="grow my-6">
       <div class="overflow-x-auto">
-  <div class="join mx-auto m-6 w-10/12 justify-center flex">
-    <select v-model="season" class="select select-bordered join-item">
+  <div class="daisy-join mx-auto m-6 w-10/12 justify-center flex">
+    <select v-model="season" class="daisy-select daisy-select-bordered daisy-join-item w-10/12">
     <option disabled selected value="null">Season</option>
     <option value="all">All</option>
     <option v-for="season in seasons" :key="season" :value="season">
     {{ season }}
   </option>
 </select>
-<select v-model="competition" class="select select-bordered join-item w-10/12">
+<select v-model="competition" class="daisy-select daisy-select-bordered daisy-join-item w-10/12">
   <option disabled selected :value="null">Competition</option>
   <option v-for="competition in competitions" :key="competition" :value="competition">
   {{ competition }}
 </option>
 </select>
-  <select v-model="team" class="select select-bordered join-item w-10/12">
+  <select v-model="team" class="daisy-select daisy-select-bordered daisy-join-item w-10/12">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
     {{ team }}
   </option>
   </select>
-  <select v-model="result" class="select select-bordered join-item w-10/12">
+  <select v-model="result" class="daisy-select daisy-select-bordered daisy-join-item w-10/12">
     <option disabled selected :value="null">Result</option>
     <option value="W">Win</option>
     <option value="D">Draw</option>
     <option value="L">Loss</option>
   </select>
   <div class="indicator">
-    <button @click="FindMatchesBasedOnSearch" class="btn join-item bg-green-900">Search</button>
+    <button @click="FindMatchesBasedOnSearch" class="daisy-btn daisy-join-item bg-green-900">Search</button>
   </div>
-  <button @click="resetFilters" class="btn join-item bg-red-700">Reset Filters</button>
+  <button @click="resetFilters" class="daisy-btn daisy-join-item bg-red-700">Reset Filters</button>
 </div>
 <div class="w-1/2 mx-auto m-6">
-  <table class="table border-2 border-white my-24">
+  <table class="daisy-table border-2 border-white my-24">
     <!-- head -->
     <thead>
       <tr>
@@ -47,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="hover" v-for="match in matches" :key="match.id">
+      <tr class="daisy-hover" v-for="match in matches" :key="match.id">
         <th>{{match.season}}</th>
         <th>{{new Date(match.kickoff).toLocaleDateString()}}</th>
         <th>{{match.homeTeam}}</th>

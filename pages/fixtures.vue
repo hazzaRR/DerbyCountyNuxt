@@ -1,26 +1,26 @@
 <template>
     <div class="grow my-6">
       <div class="overflow-x-auto">
-  <div class="join mx-auto m-6 w-10/12 justify-center flex">
-    <select v-model="competition" class="select select-bordered join-item">
+  <div class="daisy-join mx-auto m-6 w-10/12 justify-center flex">
+    <select v-model="competition" class="daisy-select daisy-select-bordered daisy-join-item">
       <option disabled selected :value="null">Competition</option>
       <option v-for="competition in competitions" :key="competition" :value="competition">
       {{ competition }}
     </option>
     </select>
-  <select v-model="team" class="select select-bordered join-item">
+  <select v-model="team" class="daisy-select daisy-select-bordered daisy-join-item">
     <option disabled selected :value="null">Team</option>
     <option v-for="team in teams" :key="team" :value="team">
     {{ team }}
   </option>
   </select>
   <div class="indicator">
-    <button @click="FindFixturesBasedOnSearch" class="btn join-item bg-green-900">Search</button>
+    <button @click="FindFixturesBasedOnSearch" class="daisy-btn daisy-join-item bg-green-900">Search</button>
   </div>
-  <button @click="resetFilters" class="btn join-item bg-red-500">Reset Filters</button>
+  <button @click="resetFilters" class="daisy-btn daisy-join-item bg-red-500">Reset Filters</button>
 </div>
 <div class="w-1/2 mx-auto m-6">
-  <table class="table border-2 border-white">
+  <table class="daisy-table border-2 border-white">
     <!-- head -->
     <thead>
       <tr>
