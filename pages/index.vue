@@ -4,7 +4,6 @@
 
             <div class="w-1/2 mx-auto m-6">
   <table class="daisy-table border-2 border-white my-24">
-    <!-- head -->
     <thead>
       <tr>
         <th>#</th>
@@ -20,17 +19,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="daisy-hover" v-for="(leagueRow, index) in leagueTable" :key="index">
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
+      <tr :class="{ 'border-t-2': index === 6 || index === 20 }" class="daisy-hover" v-for="(leagueRow, index) in leagueTable" :key="index">
+        <th>{{leagueRow.leaguePosition}}</th>
+        <th>{{leagueRow.team}}</th>
+        <th>{{leagueRow.gamesPlayed}}</th>
+        <th>{{leagueRow.wins}}</th>
+        <th>{{leagueRow.draws}}</th>
+        <th>{{leagueRow.losses}}</th>
+        <th>{{leagueRow.goalsFor}}</th>
+        <th>{{leagueRow.goalsAgainst}}</th>
+        <th>{{leagueRow.goalDifference}}</th>
+        <th>{{leagueRow.points}}</th>
     </tr>
-    <th>{{}}</th>
     </tbody>
   </table>
 </div>
@@ -38,6 +38,13 @@
 </template>
 
 <script setup>
+import { getLeagueTable } from "~/composables/getLeagueTable";
+
+const leagueTable = ref(null);
+
+onBeforeMount(async () => {
+  leagueTable.value = await getLeagueTable();
+});
 
 </script>
 
