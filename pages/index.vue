@@ -1,13 +1,43 @@
 <template>
-        <!-- <h1 class="text-xl">Welcome to this api on Derby County results, this API allows you to fetch any match score in Derby County's history and all their upcoming fixtures</h1>
-            <h2 class="text-lg">This API is continuely being improved, with the hopes of eventually getting all the data/stats from each match</h2> -->
-            <ApiReference :configuration="{spec: {content: apiContent }}" />
+        <h1 class="text-xl">Welcome to this api on Derby County results, this API allows you to fetch any match score in Derby County's history and all their upcoming fixtures</h1>
+            <h2 class="text-lg">This API is continuely being improved, with the hopes of eventually getting all the data/stats from each match</h2>
+
+            <div class="w-1/2 mx-auto m-6">
+  <table class="daisy-table border-2 border-white my-24">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th>P</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>GF</th>
+        <th>GA</th>
+        <th>GD</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="daisy-hover" v-for="(leagueRow, index) in leagueTable" :key="index">
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+        <th>{{}}</th>
+    </tr>
+    <th>{{}}</th>
+    </tbody>
+  </table>
+</div>
+
 </template>
 
 <script setup>
-import { ApiReference } from '@scalar/api-reference'
-
-const apiContent = ref({"openapi":"3.0.1","info":{"title":"Derby County API","description":"This API exposes endpoints to retrieve all past and present Derby County match data and upcoming fixtures","contact":{"name":"Harry Redman","email":"harryredman.dev@gmail.com"},"version":"1.0"},"servers":[{"url":"https://derby-api.azurewebsites.net/","description":"Production"}],"tags":[{"name":"Match","description":"API to get all the past and present Derby County match results"},{"name":"Fixture","description":"API to get all the upcoming Derby County fixture data"}],"paths":{"/api/match/seasons":{"get":{"tags":["Match"],"operationId":"seasonsPlayedIn","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"type":"string"}}}}}}}},"/api/match/record":{"get":{"tags":["Match"],"operationId":"getRecord","parameters":[{"name":"team","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/RecordDTO"}}}}}}}},"/api/match/latest-match":{"get":{"tags":["Match"],"operationId":"getLatestResult","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/MatchResult"}}}}}}},"/api/match/find":{"get":{"tags":["Match"],"operationId":"getMatchResults","parameters":[{"name":"season","in":"query","required":false,"schema":{"type":"string"}},{"name":"competition","in":"query","required":false,"schema":{"type":"string"}},{"name":"stadium","in":"query","required":false,"schema":{"type":"string"}},{"name":"team","in":"query","required":false,"schema":{"type":"string"}},{"name":"result","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/MatchResult"}}}}}}}},"/api/match/current-season":{"get":{"tags":["Match"],"operationId":"getCurrentSeason","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/StringResponse"}}}}}}},"/api/match/competitions":{"get":{"tags":["Match"],"operationId":"competitionsPlayedIn","parameters":[{"name":"season","in":"query","required":false,"schema":{"type":"string"}},{"name":"team","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"type":"string"}}}}}}}},"/api/match/all-teams-played-against":{"get":{"tags":["Match"],"operationId":"teamsPlayedAgainst","parameters":[{"name":"season","in":"query","required":false,"schema":{"type":"string"}},{"name":"competition","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"type":"string"}}}}}}}},"/api/fixtures/teams":{"get":{"tags":["Fixture"],"operationId":"teamsPlayedAgainst_1","parameters":[{"name":"competition","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"type":"string"}}}}}}}},"/api/fixtures/next-fixture":{"get":{"tags":["Fixture"],"operationId":"getNextFixture","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/Fixture"}}}}}}},"/api/fixtures/find":{"get":{"tags":["Fixture"],"operationId":"getFixtures","parameters":[{"name":"competition","in":"query","required":false,"schema":{"type":"string"}},{"name":"stadium","in":"query","required":false,"schema":{"type":"string"}},{"name":"team","in":"query","required":false,"schema":{"type":"string"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Fixture"}}}}}}}},"/api/fixtures/competitions":{"get":{"tags":["Fixture"],"operationId":"getCompetitions","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"type":"string"}}}}}}}},"/api/fixtures/":{"get":{"tags":["Fixture"],"operationId":"getFixtures_1","responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Fixture"}}}}}}}}},"components":{"schemas":{"RecordDTO":{"type":"object","properties":{"result":{"type":"string"},"count":{"type":"integer","format":"int64"}}},"MatchResult":{"type":"object","properties":{"matchId":{"type":"integer","format":"int32"},"homeTeam":{"type":"string"},"awayTeam":{"type":"string"},"kickoff":{"type":"string","format":"date-time"},"competition":{"type":"string"},"stadium":{"type":"string"},"homeScore":{"type":"integer","format":"int32"},"awayScore":{"type":"integer","format":"int32"},"result":{"type":"string"},"season":{"type":"string"},"penaltiesScore":{"type":"string"}}},"StringResponse":{"type":"object","properties":{"data":{"type":"string"}}},"Fixture":{"type":"object","properties":{"matchId":{"type":"integer","format":"int32"},"homeTeam":{"type":"string"},"awayTeam":{"type":"string"},"kickoff":{"type":"string","format":"date-time"},"competition":{"type":"string"},"stadium":{"type":"string"},"skySportsURL":{"type":"string"}}}}}})
 
 </script>
 

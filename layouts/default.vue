@@ -15,6 +15,7 @@
 const links = [
     {name: "Home", link: '/'},
     {name: "Match History", link: '/matches'},
+    {name: "API Docs", link: '/docs'},
     {name: "Upcoming Fixtures", link: '/fixtures'},
     {name: "Upcoming Features", link: '/upcoming'},
     // {name: "Current League Table", link: '/league-table'},
