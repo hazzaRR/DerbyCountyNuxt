@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Derby County API' },
         { property: 'og:description', content: 'An api for getting all derby county upcoming fixtures and match results and stats' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://www.harryredman.com' },
+        { property: 'og:url', content: 'https://derby-county.harryredman.com' },
         { property: 'og:locale', content: 'en_gb' },
         { property: 'og:image', content: '/favicon-32x32.png' },
         { name: "msapplication-TileColor", content: "#da532c"},

@@ -4,8 +4,8 @@
     <h1 class="text-xl">Welcome to this api on Derby County results, this API allows you to fetch any match score in Derby County's history and all their upcoming fixtures</h1>
     <h2 class="text-lg">This API is continuely being improved, with the hopes of eventually getting all the data/stats from each match</h2>
     
-    <div class="md:w-1/2 w-full mx-auto m-6">
-      <table class="daisy-table border-2 border-white my-24">
+    <div class="md:w-1/2 w-full mx-auto">
+      <table class="daisy-table md:daisy-table-md daisy-table-xs border-2 border-white my-24">
         <thead>
           <tr>
             <th>#</th>
