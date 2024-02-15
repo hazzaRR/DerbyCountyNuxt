@@ -19,7 +19,7 @@
   </div>
   <button @click="resetFilters" class="daisy-btn daisy-join-item bg-red-500">Reset Filters</button>
 </div>
-<div class="md:w-1/2 w-full mx-auto">
+<div class="overflow-x-auto md:w-1/2 w-full mx-auto">
   <table class="daisy-table md:daisy-table-md daisy-table-xs border-2 border-white">
     <!-- head -->
     <thead>
