@@ -4,7 +4,7 @@
         <slot class="grow"/>
         <footer class="daisy-footer daisy-footer-center p-4 bg-base-200 text-base-content border-t-2 border-white sticky bottom-0 z-50">
             <aside>
-                <p>Copyright © 2024 - All right reserved by Harry Redman</p>
+                <p>Copyright © 2024 - Created by Harry Redman</p>
             </aside>
         </footer>
     </div>

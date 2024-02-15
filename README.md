@@ -4,11 +4,9 @@ Hi welcome to my repository for the frontend for my the Derby County API website
 
 ## Features to add
 
-1. add current league table
-2. fix styling issue on phone screens
-3. fetch latest game result
-4. fetch next fixture
-5. sorting by data by different parameters
+1. sorting by data by different parameters
+2. make filter option appear as modal
+3. add loading icons when waiting for data to load
 
 
 ## Setup

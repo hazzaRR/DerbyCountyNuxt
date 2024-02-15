@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <h1 class="text-3xl mx-auto text-center my-4 font-black">WE ARE DERBY!</h1>
+
     <h1 class="text-xl">Welcome to this api on Derby County results, this API allows you to fetch any match score in Derby
       County's history and all their upcoming fixtures</h1>
     <h2 class="text-lg">This API is continuely being improved, with the hopes of eventually getting all the data/stats
