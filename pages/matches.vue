@@ -80,7 +80,7 @@
       </div>
       
       <div class="overflow-x-auto md:w-1/2 w-full mx-auto">
-        <table class="daisy-table md:daisy-table-md daisy-table-xs border-2 border-white my-24">
+        <table class="daisy-table md:daisy-table-md daisy-table-xs border-2 border-white my-16">
           <!-- head -->
           <thead>
             <tr>
