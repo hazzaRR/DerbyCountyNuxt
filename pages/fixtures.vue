@@ -49,7 +49,7 @@
       <div class="overflow-x-auto">
       <div class="mx-auto w-10/12 justify-center flex">
         <div class="daisy-join daisy-join-vertical lg:daisy-join-horizontal">
-          <button class="daisy-btn daisy-join-item bg-green-900" onclick="filterModal.showModal()">
+          <button class="daisy-btn daisy-join-item bg-green-900" @click="filterModal.showModal()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -57,7 +57,7 @@
             </svg>
             Filter results
           </button>
-          <!-- <button class="daisy-btn daisy-join-item bg-blue-900" onclick="">
+          <!-- <button class="daisy-btn daisy-join-item bg-blue-900" @click="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"

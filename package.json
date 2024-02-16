@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@scalar/api-reference": "^1.14.8",
-    "daisyui": "^3.7.3"
+    "daisyui": "^3.7.3",
+    "file-saver": "^2.0.5"
   }
 }

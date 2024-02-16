@@ -68,7 +68,7 @@
             </svg>
             Filter results
           </button>
-          <button class="daisy-btn daisy-join-item bg-blue-900" onclick="">
+          <button class="daisy-btn daisy-join-item bg-blue-900" @click="DownloadMatchesBasedOnSearch">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -188,6 +188,10 @@ const getCurrentSeason = async () => {
 
 const FindMatchesBasedOnSearch = async () => {
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
+};
+
+const DownloadMatchesBasedOnSearch = async () => {
+  await downloadMatchesToCSV(season.value, team.value, stadium.value, competition.value, result.value);
 };
 
 const resetFilters = async () => {
