@@ -48,7 +48,6 @@ export const downloadMatchesToCSV = async (season, team, stadium, competition, r
 
         const blob = await response.blob();
 
-        // Use FileSaver.js to trigger the download
         saveAs(blob, 'matches.csv');
         
         return;
