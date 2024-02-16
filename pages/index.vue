@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div class="grow">
+
+    <div v-if="isLoading" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <span class="daisy-loading daisy-loading-dots daisy-loading-lg"></span>
+    </div>
 
     <h1 class="text-3xl mx-auto text-center my-4 font-black">WE ARE DERBY!</h1>
 
@@ -101,11 +105,13 @@ import { getNextFixture } from "~/composables/getNextFixture";
 const leagueTable = ref(null);
 const latestResult = ref(null);
 const nextFixture = ref(null);
+const isLoading = ref(true);
 
 onBeforeMount(async () => {
   leagueTable.value = await getLeagueTable();
   latestResult.value = await getLatestResult();
   nextFixture.value = await getNextFixture();
+  isLoading.value = false;
 });
 
 </script>

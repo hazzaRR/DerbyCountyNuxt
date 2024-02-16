@@ -1,5 +1,8 @@
 <template>
   <div class="grow my-6">
+    <div v-if="isLoading" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <span class="daisy-loading daisy-loading-dots daisy-loading-lg"></span>
+    </div>
       <div class="overflow-x-auto">
   <div class="daisy-join mx-auto m-6 w-10/12 justify-center flex">
     <select v-model="season" class="daisy-select daisy-select-bordered daisy-join-item w-10/12">
@@ -76,6 +79,7 @@ const matches = ref([]);
 const seasons = ref([]);
 const teams = ref([]);
 const competitions = ref([]);
+const isLoading = ref(true);
 
 //search params
 const season = ref(null);
@@ -91,6 +95,7 @@ onBeforeMount(async () => {
   teams.value = await getTeams(season.value);
   competitions.value = await getCompetitions(season.value);
   matches.value = await getMatches(season.value, team.value, stadium.value, competition.value, result.value);
+  isLoading.value = false;
 });
 
 watch(season, async (newSeason) => {
