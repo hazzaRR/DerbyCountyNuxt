@@ -4,7 +4,7 @@
       <span class="daisy-loading daisy-loading-dots daisy-loading-lg"></span>
     </div>
 
-    <dialog id="filterModal" class="daisy-modal">
+    <dialog id="filterModal" class="daisy-modal daisy-modal-bottom sm:daisy-modal-middle">
       <div class="daisy-modal-box">
         <form method="dialog">
           <button class="daisy-btn daisy-btn-sm daisy-btn-circle daisy-btn-ghost absolute right-2 top-2">✕</button>
