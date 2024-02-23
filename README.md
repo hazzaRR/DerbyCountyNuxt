@@ -5,6 +5,7 @@ Hi welcome to my repository for the frontend for my the Derby County API website
 ## Features to add
 
 1. sorting by data by different parameters
+2. fix api issue with filtering by result parameter, which is currently not working
 
 
 ## Setup

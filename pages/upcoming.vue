@@ -7,6 +7,7 @@
         <ol class="list-decimal mx-10">
             <li class="my-2">sorting by data by different parameters</li>
             <li class="my-2">getting all the data/stats from each match</li>
+            <li class="my-2">fix api issue with filtering by result parameter, which is currently not working</li>
         </ol>
         
         <h2 class="text-lg">This API is currently being run on Azure's App Service free tier and therefore the API will need to start up if it has not been used. Please give the API around a minute to respond</h2>
