@@ -27,6 +27,12 @@
           <div v-if="latestResult.stadium != null || latestResult.stadium != ''" class="daisy-stat-desc">{{latestResult.stadium}}</div>
           <div class="daisy-stat-value text-blue-700">{{latestResult.homeScore}}-{{ latestResult.awayScore }}</div>
           <div class="daisy-stat-desc text-blue-700">{{new Date(latestResult.kickoff).toLocaleDateString()}}</div>
+          <div v-if="matchResultRecord" class="daisy-stat-desc">
+            <div class="daisy-stat-desc">All time record</div>
+            <span class=" text-green-900 font-semibold">W:{{ matchResultRecord[2].count }}</span>
+            <span class=" text-blue-900 font-semibold" > D:{{ matchResultRecord[0].count }}</span>
+            <span class=" text-red-900 font-semibold"> L:{{ matchResultRecord[1].count }}</span>
+          </div>
         </div>
         
         <div class="daisy-stat place-items-center">
@@ -49,11 +55,11 @@
           <div v-if="nextFixture.stadium != null || nextFixture.stadium != ''" class="daisy-stat-desc">{{nextFixture.stadium}}</div>
           <div class="daisy-stat-value text-green-900">vs</div>
           <div class="daisy-stat-desc text-green-900">{{new Date(nextFixture.kickoff).toLocaleString().substring(0, 17)}}</div>
-          <div class="daisy-stat-desc">All time record</div>
-          <div v-if="resultRecord" class="daisy-stat-desc">
-            <span class=" text-green-900 font-semibold">W:{{ resultRecord[2].count }}</span>
-            <span class=" text-blue-900 font-semibold" > D:{{ resultRecord[0].count }}</span>
-            <span class=" text-red-900 font-semibold"> L:{{ resultRecord[1].count }}</span>
+          <div v-if="fixtureResultRecord" class="daisy-stat-desc">
+            <div class="daisy-stat-desc">All time record</div>
+            <span class=" text-green-900 font-semibold">W:{{ fixtureResultRecord[2].count }}</span>
+            <span class=" text-blue-900 font-semibold" > D:{{ fixtureResultRecord[0].count }}</span>
+            <span class=" text-red-900 font-semibold"> L:{{ fixtureResultRecord[1].count }}</span>
           </div>
         </div>
         
@@ -113,14 +119,16 @@ import { getAllTimeRecordAgainstTeam } from "~/composables/getAllTimeRecordAgain
 const leagueTable = ref(null);
 const latestResult = ref(null);
 const nextFixture = ref(null);
-const resultRecord = ref(null);
+const fixtureResultRecord = ref(null);
+const matchResultRecord = ref(null);
 const isLoading = ref(true);
 
 onBeforeMount(async () => {
   leagueTable.value = await getLeagueTable();
   latestResult.value = await getLatestResult();
   nextFixture.value = await getNextFixture();
-  resultRecord.value = await getAllTimeRecordAgainstTeam(nextFixture.value.awayTeam);
+  fixtureResultRecord.value = await getAllTimeRecordAgainstTeam(nextFixture.value.awayTeam);
+  matchResultRecord.value = await getAllTimeRecordAgainstTeam(latestResult.value.awayTeam);
   isLoading.value = false;
 });
 
