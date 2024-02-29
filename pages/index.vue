@@ -29,9 +29,9 @@
           <div class="daisy-stat-desc text-blue-700">{{new Date(latestResult.kickoff).toLocaleDateString()}}</div>
           <div v-if="matchResultRecord" class="daisy-stat-desc">
             <div class="daisy-stat-desc">All time record</div>
-            <span class=" text-green-900 font-semibold">W:{{ matchResultRecord[2].count }}</span>
-            <span class=" text-blue-900 font-semibold" > D:{{ matchResultRecord[0].count }}</span>
-            <span class=" text-red-900 font-semibold"> L:{{ matchResultRecord[1].count }}</span>
+            <span class=" text-green-900 font-semibold">W:{{ getCountForResult(matchResultRecord, "W") }}</span>
+            <span class=" text-blue-900 font-semibold" > D:{{ getCountForResult(matchResultRecord, "D") }}</span>
+            <span class=" text-red-900 font-semibold"> L:{{ getCountForResult(matchResultRecord, "L") }}</span>
           </div>
         </div>
         
@@ -57,9 +57,9 @@
           <div class="daisy-stat-desc text-green-900">{{new Date(nextFixture.kickoff).toLocaleString().substring(0, 17)}}</div>
           <div v-if="fixtureResultRecord" class="daisy-stat-desc">
             <div class="daisy-stat-desc">All time record</div>
-            <span class=" text-green-900 font-semibold">W:{{ fixtureResultRecord[2].count }}</span>
-            <span class=" text-blue-900 font-semibold" > D:{{ fixtureResultRecord[0].count }}</span>
-            <span class=" text-red-900 font-semibold"> L:{{ fixtureResultRecord[1].count }}</span>
+            <span class=" text-green-900 font-semibold">W:{{ getCountForResult(fixtureResultRecord, "W") }}</span>
+            <span class=" text-blue-900 font-semibold" > D:{{ getCountForResult(fixtureResultRecord, "D") }}</span>
+            <span class=" text-red-900 font-semibold"> L:{{ getCountForResult(fixtureResultRecord, "L") }}</span>
           </div>
         </div>
         
@@ -123,6 +123,13 @@ const fixtureResultRecord = ref(null);
 const matchResultRecord = ref(null);
 const isLoading = ref(true);
 
+const getCountForResult = (data, result) => {
+  console.log(data);
+      const resultObject = data.find(item => item.result === result);
+    
+      return resultObject ? resultObject.count : 0;
+}
+
 onBeforeMount(async () => {
   leagueTable.value = await getLeagueTable();
   latestResult.value = await getLatestResult();
@@ -131,6 +138,7 @@ onBeforeMount(async () => {
   matchResultRecord.value = await getAllTimeRecordAgainstTeam(latestResult.value.awayTeam);
   isLoading.value = false;
 });
+
 
 </script>
 
