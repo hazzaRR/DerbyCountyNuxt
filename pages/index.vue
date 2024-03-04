@@ -134,8 +134,8 @@ onBeforeMount(async () => {
   leagueTable.value = await getLeagueTable();
   latestResult.value = await getLatestResult();
   nextFixture.value = await getNextFixture();
-  fixtureResultRecord.value = await getAllTimeRecordAgainstTeam(nextFixture.value.awayTeam);
-  matchResultRecord.value = await getAllTimeRecordAgainstTeam(latestResult.value.awayTeam);
+  fixtureResultRecord.value = await getAllTimeRecordAgainstTeam(nextFixture.value.homeTeam !== "Derby County" ? nextFixture.value.homeTeam : nextFixture.value.awayTeam);
+  matchResultRecord.value = await getAllTimeRecordAgainstTeam(latestResult.value.homeTeam !== "Derby County" ? latestResult.value.homeTeam : latestResult.value.awayTeam);
   isLoading.value = false;
 });
 

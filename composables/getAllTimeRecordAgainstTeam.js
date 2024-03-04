@@ -1,5 +1,7 @@
 export const getAllTimeRecordAgainstTeam = async (team) => {
 
+    console.log(team)
+
     const config = useRuntimeConfig();
     // Define the base URL
     const baseUrl = `${config.public.API_BASE_URL}/api/match/record`;
